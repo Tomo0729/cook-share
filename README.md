@@ -1,24 +1,25 @@
-# README
-
-#cook-share
+# cook-share
 
 ## サイト概要
 ### サイトテーマ
-#冷蔵庫などに余っている食材を使い切るため、食材をキーワードに検索すると
-その食材を使ったレシピを提案してくれる
+<冷蔵庫などに余っている食材を使い切るため、食材をキーワードに検索すると
+その食材を使ったレシピを見れるコミュニティサイト>
 
 ### テーマを選んだ理由
-自宅にある食材を全て使い切るのは難しく、余っている食材を検索して
-簡単にその食材を使ったレシピが見れたら便利だなと思いました。
+<自宅にある食材を全て使い切るのは難しく、余っている食材を検索して
+簡単にその食材を使ったレシピが見れたら便利だなと思いました>
 
 ### ターゲットユーザ
-料理初心者
-料理好き
+- 料理初心者
+- 一人暮らし始めた人
+- 主婦向け
+- 料理好き
 
 ### 主な利用シーン
-余っている食材を検索する
-自分が作ったレシピの投稿
-今日のご飯を考えるとき
+- 余っている食材を検索する時
+- 今日のご飯を考える時
+- 自分が作ったレシピの投稿する時
+- お気に入りのレシピを見つける時
 
 ## 設計書
 
@@ -34,28 +35,7 @@ https://docs.google.com/spreadsheets/d/167rEYLHLAzfiTUPrJKW-YlePsjImZlvge5OfpuNZ
 - IDE：Cloud9
 
 ## 使用素材
+<使用検討中です>
 
 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
