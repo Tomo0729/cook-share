@@ -1,0 +1,51 @@
+<div class="container my-5">
+  <div class="row">
+    <h2>会員編集画面</h2>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <% if flash[:user_updated_error] %>
+      <span class="text-danger"><%= flash[:user_updated_error] %></span>
+    <% end %>
+  </div>
+
+    <div class="row mt-3 flex-column align-items-center">
+    <h2><%= @user.last_name %><%= @user.first_name %>さんの会員情報編集</h2>
+  <%= form_with model: [:admin, @user] do |f| %>
+  　 <div class="form-group row">
+          <%= f.label :会員id, class: "col-sm-4" %>
+          <%= f.label @user.id, class: "col-sm-8" %>
+     </div>
+
+     <div class="form-group row">
+          <%= f.label :氏名, class: "col-sm-4" %>
+          <%= f.text_field :last_name, class: "form-control col-sm-4" %>
+          <%= f.text_field :first_name, class: "form-control col-sm-4" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :フリガナ, class: "col-sm-4" %>
+          <%= f.text_field :last_name_kana, class: "form-control col-sm-4" %>
+          <%= f.text_field :first_name_kana, class: "form-control col-sm-4" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :メールアドレス, class: "col-sm-4" %>
+          <%= f.email_field :email, class: "form-control col-sm-8" %>
+        </div>
+
+        <div class="row">
+          <%= f.label :会員ステータス, class: "ml-3" %>
+          <div class="form-check ml-4">
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :is_deleted, "有効会員" %>
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会済み" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+  　      <%= f.submit "変更を保存", class: "btn btn-success" %>
+        </div>
+  <% end %>
+</div>

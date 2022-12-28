@@ -1,0 +1,40 @@
+<div class="container my-5">
+  <div class="row">
+   <h2><%= @user.last_name %><%= @user.first_name %>さんの会員詳細</h2>
+  </div>
+  <table class= "table">
+   <tr>
+     <th>会員ID</th>
+     <td><%= @user.id %></td>
+   </tr>
+   <tr>
+    <th>氏名</th>
+    <td><%= @user.last_name %><%= @user.first_name %></td>
+   </tr>
+   </tr>
+　　<th>フリガナ</th>
+    <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
+   </tr>
+   <tr>
+     <th>メールアドレス</th>
+     <td><%= @user.email %></td>
+   </tr>
+   <tr>
+     <th>会員ステータス</th>
+     <td>
+      <% if @user.is_deleted == false %>
+       <div class="bg-info d-inline text-white p-1 ml-3 rounded">
+          有効会員
+       </div>
+      <% else %>
+       <div class="bg-danger d-inline text-white p-1 ml-3 rounded">
+           退会済み
+       </div>
+      <% end %>
+
+     </td>
+   </tr>
+  </table>
+   <%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-success" %>
+   <%= link_to "投稿レシピ一覧を見る", admin_recipes_path(@user.id), class: "btn btn-primary" %>
+</div>

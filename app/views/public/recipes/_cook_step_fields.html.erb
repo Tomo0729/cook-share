@@ -1,0 +1,6 @@
+
+<div class="nested-fields">
+  <%= f.text_area :direction, placeholder: "作り方", class: "cook_steps" %>
+  <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
+  <%= link_to_remove_association "削除", f , class: "btn btn-outline-primary ms navbar-brand"%>
+</div>

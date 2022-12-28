@@ -1,0 +1,26 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="offset-1">
+      <h1 class="red-border px-3"><strong>本当に退会しますか？</strong></h1>
+    </div>
+  </div>
+
+  <div class="row my-5">
+    <div class="offset-2">
+      <p>退会すると、会員登録情報やこれまでの購入履歴が閲覧できなくなります。</p>
+      <p>退会する場合は、「退会する」を選んでください。</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="offset-3 col-2">
+    <%= link_to "退会しない" ,public_user_path(current_user), class: "btn btn-primary" %>
+    <!-- 注文履歴一覧へ-->
+    </div>
+    <div class="offset-2 col-2">
+    <%= link_to "退会する" , public_out_user_path(current_user),method: :patch, class: "btn btn-danger" %>
+    </div>
+
+  </div>
+</div>
+

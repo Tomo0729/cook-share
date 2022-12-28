@@ -1,0 +1,18 @@
+<div class="container my-5">
+ <div class="row">
+   <h3><strong>レシピ一覧</strong></h3>
+    
+    <div class="row">
+	    	<% @recipes.each do |recipe| %>
+          <div class="col-3 mt-3">
+           <%= link_to public_recipe_path(recipe) do %>
+		          <%= image_tag recipe.image, size: "150x150",class: 'rounded' %>
+		         <% end %>
+		         <p><%= recipe.name %></p>
+		         <p><%= recipe.introduction %></p>
+          </div>
+        <% end %>
+        <%= paginate @recipes %>
+	   </div>
+ </div>
+</div>
