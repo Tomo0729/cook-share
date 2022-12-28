@@ -1,0 +1,23 @@
+<div class="container my-5">
+ <div class="row">
+   <h3><strong>いいね❤︎一覧</strong></h3>
+   <br>
+   <br>
+   <div class="row">
+   <% @favorite_recipes.each do |recipe| %>
+      <div class="col-3 mt-3">
+      <%= link_to public_recipe_path(recipe) do %>
+        <% if recipe.image.attached? %>
+          <%= image_tag recipe.image, size: "200x200" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+		  <% end %>
+		  <p><%= recipe.name %></p>
+		  <p><%= recipe.introduction %></p>
+      </div>
+     </div>
+   <% end %>
+   </div>
+  </div>
+</div>

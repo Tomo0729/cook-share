@@ -23,7 +23,7 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     @comment = Comment.new
- 
+
   end
 
   def new
@@ -65,6 +65,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def search
+    @recipe = Recipe.search(params[:keyword])
     if user_signed_in?
       @recipes = @q.result(distinct: true).includes([:favorites]).page(params[:page]).per(6)
     else

@@ -1,10 +1,8 @@
 class Public::UsersController < ApplicationController
+
   def show
    @user= User.find(params[:id])
    @recipe = @user.recipes
-
-   favorites = Favorite.where(user_id: current_user.id).pluck(:recipe_id)
-   @favorite_list = Recipe.find(favorites)
   end
 
   def edit
@@ -29,6 +27,13 @@ class Public::UsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
+
+  def favorites
+   @user = User.find(params[:id])
+   favorites= Favorite.where(user_id: @user.id).pluck(:recipe_id)
+   @favorite_recipes = Recipe.find(favorites)
+  end
+
 
   private
   def user_params
