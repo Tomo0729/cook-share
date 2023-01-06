@@ -2,14 +2,14 @@ class Public::RecipesController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   def index
-
+   
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
     if user_signed_in?
       @recipes = @recipes.includes([:user], [:favorites]).page(params[:page]).per(12)
     else
       @recipes = @recipes.includes([:user]).page(params[:page]).per(12)
     end
-
+     @amount= Recipe.count
      @comment = Comment.new
 
     if user_signed_in?

@@ -3,12 +3,11 @@
   <div class="row">
    <div class= "cooking-tittle">
    <% if @search.present? %>
-    「<%= @search %>」の検索結果
+    <h2 class="recipe-heading">「<%= @search %>」の検索結果<i class="fa-solid fa-magnifying-glass"></i></h2>
    <% else %>
-  　 検索結果
+  　<h2 class="recipe-heading"><i class="fa-solid fa-magnifying-glass"></i>検索結果</h2>
    <% end %>
    </div>
-   <div class="cancel"><%= link_to 'レシピ一覧に戻る', public_recipes_path, class: "btn btn-outline-primary mr-4 navbar-brand" %></div>
    <div class="row">
    <% @recipe. each do |recipe| %>
     <div class="col-3 mt-3">

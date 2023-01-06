@@ -3,15 +3,13 @@
 　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ詳細</h2>
   </div>
 <!-- 画像 -->
-	  <div class="col-5">
-       <div class="row">
+    <div class="row">
             <% if @recipe.image.attached? %>
              <%= image_tag @recipe.image, size: "200x200" %>
             <% else %>
              <%= image_tag 'no_image', size: "200x200" %>
             <% end %>
-	   </div>
-      </div>
+    </div>
 <!-- タイトル -->
     <div class="col-5">
      <div class="row mt-3">
@@ -22,20 +20,52 @@
       <p><%= @recipe.introduction %></p>
      </div>
 <!-- 材料 -->
-     <div class="row mt-3"><strong>材料</strong></div>
-     <% @recipe.ingredients.each do |ingredient| %>
-      <p><%= ingredient.name %></p>
-      <p><%= ingredient.quantity %></p>
-     <% end %>
-
+     <div class="row">
+　　  <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>材料</h2>
+     </div>
+     <table class= "table">
+      <thead>
+    　 <tr>
+     　  <th>材料</th>
+　　　  <th>分量</th>
+　　　  <th></th>
+　　　 </tr>
+　　　</thead>
+　　　<tbody>
+       <% @recipe.ingredients.each do |ingredient| %>
+        <tr>
+         <td><%= ingredient.name %></td>
+         <td><%= ingredient.quantity %></td>
+        </tr>
+       <% end %>
+      </tbody>
+     </table>
+</div>
 
 <!-- 作り方 -->
-　　　<div class="row mt-3"><strong>作り方</strong></div>
-     <% @recipe.cook_steps.each do |cook_step| %>
-      <p><%= cook_step.direction %></p>
-     <% end %>
+<div class="container my-5">
+　　<div class="row">
+　　  <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>作り方</h2>
+     </div>
+     <table class= "table">
+      <thead>
+    　 <tr>
+     　  <th>手順</th>
+　　　  <th></th>
+　　　  <th></th>
+　　　 </tr>
+　　　</thead>
+　　　<tbody>
+       <% @recipe.cook_steps.each do |cook_step| %>
+        <tr>
+         <td><%= cook_step.direction %></td>
+         <td></td>
+        </tr>
+       <% end %>
+      </tbody>
+     </table>
 
-  <%= link_to "編集する", edit_public_recipe_path, class: "btn btn-success" %>
+  <%= link_to "編集する", edit_public_recipe_path, class: "btn btn-outline-dark mr-4 navbar-brand" %>
 
   <br>
   <br>
@@ -53,29 +83,40 @@
       <% end %>
     </p>
    <% end %>
-
-</section>
-
-　<div>
+  </section>
+</div>
+<div class="container my-5">
+  <div class="row">
+　　<h2 class="recipe-heading"><i class="fa-regular fa-comment"></i>コメント</h2>
+  </div>
+  <table class= "table">
     <p>コメント件数：<%= @recipe.comments.count %></p>
-  <% @recipe.comments.each do |comment| %>
-    <%= comment.user.last_name %><%= comment.user.first_name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-  <% end %>
-  <%= @comment.comment %>
+      <thead>
+    　 <tr>
+     　  <th>ユーザー名</th>
+     　  <th>日付</th>
+　　　  <th>コメント</th>
+　　　  <th></th>
+　　　 </tr>
+　　　</thead>
+　　　<tbody>
+       <% @recipe.comments.each do |comment| %>
+        <tr>
+         <td><%= comment.user.last_name %><%= comment.user.first_name %></td>
+         <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+         <td><%= comment.comment %></td>
+        </tr>
+       <% end %>
+      </tbody>
+     </table>
+      <%= @comment.comment %>
 </div>
 <div>
   <%= form_with model: [:public, @recipe, @comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
+    <div class="text_area"><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control col-sm-4"%></div>
+    <%= f.submit "送信する", class: "btn btn-outline-dark mr-4 navbar-brand"%>
   <% end %>
 </div>
-
-
-     </div>
-    </div>
-   </div>
-  </div>
-
- </div>
 </div>
+
+

@@ -1,36 +1,10 @@
-<main>
-<div class="container my-5">
+
+ <div class="container my-5">
   <div class="row">
 　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ一覧(全<%= @amount %>件)</h2>
   </div>
     <%= render 'recipe_search' %>
     <%= render 'tag_list' %>
-    <div class="row">
-	    	<% @recipes.each do |recipe| %>
-          <div class="col-3 mt-3">
-           <%= link_to public_recipe_path(recipe) do %>
-            <% if recipe.image.attached? %>
-             <%= image_tag recipe.image, size: "200x200" %>
-            <% else %>
-             <%= image_tag 'no_image', size: "200x200" %>
-            <% end %>
-		         <% end %>
-		         <p><%= recipe.name %></p>
-		         <p><%= recipe.introduction %></p>
-          </div>
-        <% end %>
-	   </div>
-	  <div class="pagination">
-	    <%= paginate @recipes %>
-	   </div>
-	 </div>
-	</div>
-</main>
-
-<div class="container my-5">
-  <div class="row">
-　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ一覧(全<%= @amount %>件)</h2>
-  </div>
   <div class="row">
      <% @recipes.each do |recipe| %>
           <div class="col-3 mt-3">
@@ -46,4 +20,9 @@
           </div>
      <% end %>
 	</div>
+	<div class="pagination">
+	 <%= paginate @recipes %>
+	</div>
+</div>
 
+ 
