@@ -1,21 +1,21 @@
 <div class="container my-5">
  <div class="row">
-   <h3>マイページ</h3>
-   <h3>会員情報          <%= link_to "編集する", edit_public_user_path(@user.id), class: "btn btn-success" %></h3>
+   <h3><i class="fa-solid fa-user"></i>マイページ        <%= link_to  new_public_recipe_path, class:" text-dark" do %><i class="fa-regular fa-square-plus"></i><% end %></h3>
    <table class= "table">
     <tr>
       <th>氏名</th>
       <td><%= @user.last_name %><%= @user.first_name %></td>
     </tr>
     <tr>
-　　 <th>フリガナ</th>
+　　 <th>ふりがな</th>
      <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
     </tr>
     <tr>
-     <th>メールアドレス</th>
+     <th>E-mail</th>
      <td><%= @user.email %></td>
     </tr>
    </table>
-   <%= link_to "お気に入り一覧", favorites_public_user_path(@user)%>
+   <%= link_to "編集する", edit_public_user_path(@user.id), class: "btn btn-outline-dark mr-4 navbar-brand" %>
+   <%= link_to "お気に入り一覧", favorites_public_user_path(@user), class: "btn btn-outline-dark mr-4 navbar-brand" %>
  </div>
 </div>

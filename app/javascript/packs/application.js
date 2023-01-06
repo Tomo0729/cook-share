@@ -11,12 +11,12 @@ import '@fortawesome/fontawesome-free/js/all'
 
 require("jquery")
 
-
 require("jquery")
 require("@nathanvda/cocoon")
 
+
 import 'cocoon-js';
-require ("src/cocoon")
+
 
 Rails.start()
 Turbolinks.start()

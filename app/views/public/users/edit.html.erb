@@ -1,7 +1,4 @@
 <div class="container my-5">
-  <div class="row">
-    <h2>会員登録画面</h2>
-  </div>
 
   <div class="row d-flex justify-content-center">
     <% if flash[:user_updated_error] %>
@@ -31,14 +28,17 @@
           <%= f.label :メールアドレス, class: "col-sm-4" %>
           <%= f.email_field :email, class: "form-control col-sm-8" %>
         </div>
-
-         <div class="row">
+        <div class="row">
           <div class="offset-4 col-2">
-           <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+           <%= f.submit "編集内容を保存", class: "btn btn-outline-dark" %>
           </div>
           <div class="offset-3">
-           <%= link_to "退会する" , public_quit_user_path(@user), method: :get, class: "btn btn-danger" %>
+           <%= link_to "退会する" , public_quit_user_path(@user), method: :get, class: "btn btn-outline-danger" %>
           </div>
-         </div>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
   <% end %>
 </div>

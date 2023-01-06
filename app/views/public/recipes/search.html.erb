@@ -1,0 +1,26 @@
+<main>
+ <div class="container my-5">
+  <div class="row">
+   <div class= "cooking-tittle">
+   <% if @search.present? %>
+    「<%= @search %>」の検索結果
+   <% else %>
+  　 検索結果
+   <% end %>
+   </div>
+   <div class="cancel"><%= link_to 'レシピ一覧に戻る', public_recipes_path, class: "btn btn-outline-primary mr-4 navbar-brand" %></div>
+   <div class="row">
+   <% @recipe. each do |recipe| %>
+    <div class="col-3 mt-3">
+    <% if recipe.image.attached? %>
+     <%= image_tag recipe.image, size: "200x200" %>
+    <% else %>
+     <%= image_tag 'no_image', size: "200x200" %>
+    <% end %>
+     <p><%= recipe.name %></p>
+	    <p><%= recipe.introduction %></p>
+	   </div>
+   <% end %>
+ </div>
+</main>
+    

@@ -2,13 +2,15 @@
   <div class="container">
 
     <div class="navbar-header">
-      <%= link_to "Cookshare", root_path, class: "navbar-brand" %>
+      <%= link_to root_path do %>
+       <%= image_tag 'cook-share.png',size: "70x70" %>
+      <% end %>
     </div>
 
     <% if user_signed_in? %>
 
       <span class="u h7 text-white strong">
-        ようこそ！<%= current_user.last_name %><%= current_user.first_name %>さん！
+        <i class="fas fa-bullhorn"></i>ようこそ！<%= current_user.last_name %><%= current_user.first_name %>さん！
       </span>
 
       <ul class="navbar-nav">

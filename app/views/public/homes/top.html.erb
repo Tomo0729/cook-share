@@ -1,3 +1,70 @@
-topページ
+<div class="search">
+ <div class="container">
+	<div class="row">
+			<div class="search-form">
+		   <%= render 'public/recipes/recipe_search' %>
+			</div>
+	</div>
+ </div>
+</div>
+</div>
+  <div class="main-visual">
+    <div class="main-visual-content">
+      <h1 style="font-weight: bold;">Welcome to<br>CookShare</h1>
+		  <p class="main-visual-text">
+       	 冷蔵庫に余っている<br />
+         食材を使って<br />
+         美味しいご飯を作りませんか？
+       </p>
+       <p class="main-visual-name">
+       </p>
+    </div>
+  </div>
+</div>
+</main>
+<div class="container my-5">
+  <div class="row">
+　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>新着レシピ(全<%= @amount %>件)</h2>
+  </div>
+  <div class="row">
+     <% @recipes.each do |recipe| %>
+          <div class="col-3 mt-3">
+           <%= link_to public_recipe_path(recipe) do %>
+            <% if recipe.image.attached? %>
+             <%= image_tag recipe.image, size: "200x200" %>
+            <% else %>
+             <%= image_tag 'no_image', size: "200x200" %>
+            <% end %>
+		         <% end %>
+		         <p><%= recipe.name %></p>
+		         <p><%= recipe.introduction %></p>
+          </div>
+     <% end %>
+	</div>
+	 <div class="row">
+	　<section class="popular">
+          <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピカテゴリ</h2>
+          <div class="sidebar-contents">
+            <p class="popular-text">
+              和食<br />
+            </p>
+            <p class="popular-text">
+              洋食
+            </p>
+            <p class="popular-text">
+              簡単時短レシピ
+            </p>
+            <p class="popular-text">
+              特別な日にぴったりレシピ
+            </p>
+            <p class="popular-text">
+             <br />
+            </p>
+          </div>
+    </section>
+   </div>
+</div>
+
 
 <%= link_to "ゲストログイン",public_users_guest_sign_in_path, method: :post %>
+

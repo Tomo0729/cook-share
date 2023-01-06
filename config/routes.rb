@@ -20,7 +20,7 @@ namespace :admin do
     patch 'users/out' => 'users#out', as: 'out_user'
     resources :users, only: [:show, :index, :edit, :update]
     resources :recipes, except: [:destroy]
-    resources :comments, only: [:index, :edit, :update, :destroy]
+    resources :comments
   end
 
  namespace :public do
@@ -29,6 +29,7 @@ namespace :admin do
     get '/users/:id/quit' => 'users#quit', as: 'quit_user'
     patch 'users/out' => 'users#out', as: 'out_user'
     get 'search' => 'recipes#search'
+    get 'recipes/tag/:tag_name', to: "recipes#tag_search"
     resources :recipes do
      collection do
        get 'search'

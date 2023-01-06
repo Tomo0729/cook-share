@@ -19,7 +19,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def show
-
+    @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
     @recipe = Recipe.find(params[:id])
 
     @comment = Comment.new
@@ -61,17 +61,11 @@ class Public::RecipesController < ApplicationController
   def destroy
     @recipe= Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to public_user_path(current_user.id)
+    redirect_to public_recipes_path(current_user.id)
   end
 
   def search
     @recipe = Recipe.search(params[:keyword])
-    if user_signed_in?
-      @recipes = @q.result(distinct: true).includes([:favorites]).page(params[:page]).per(6)
-    else
-      @recipes = @q.result(distinct: true).includes([:user]).page(params[:page]).per(6)
-    end
-    @search = params[:q][:title_or_ingredients_content_cont]
   end
 
   def tag_search
@@ -79,16 +73,10 @@ class Public::RecipesController < ApplicationController
     @recipes = @tag.recipes.includes([:user], [:favorites])
   end
 
+
   private
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
 
-    def set_q
-      @q = Recipe.ransack(params[:q])
-    end
 
-    # Only allow a list of trusted parameters through.
     def recipe_params
       params.require(:recipe).permit(
         :image,
@@ -97,7 +85,8 @@ class Public::RecipesController < ApplicationController
         :user_id,
         tag_ids: [],
         ingredients_attributes: [:id, :name, :quantity, :_destroy],
-        cook_steps_attributes: [:id, :direction, :image, :_destroy]
+        cook_steps_attributes: [:id, :direction, :image, :_destroy],
+        tags_attributes: [:id, :tag_name],tags_ids: []
       )
     end
 end

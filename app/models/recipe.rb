@@ -9,8 +9,10 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :cook_steps, allow_destroy: true
 
   has_many :comments, dependent: :destroy
-  has_many :tags
-  has_many :tag_relations
+  has_many :tags, through: :tag_relations
+  accepts_nested_attributes_for :tags, allow_destroy: true
+  has_many :tag_relations, dependent: :destroy
+  accepts_nested_attributes_for :tag_relations, allow_destroy: true
   has_many :favorites, dependent: :destroy
 
   #validates :user_id, precedence: true
@@ -31,5 +33,11 @@ class Recipe < ApplicationRecord
     errors.add(:base, "作り方は１つ以上登録してください。") if self.cook_steps.blank?
   end
 
-
+  def self.search(search)
+    if search
+      Recipe.where('ingredients LIKE (?), "%#{search}%')
+    else
+      Recipe.all
+    end
+  end
 end

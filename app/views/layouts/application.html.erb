@@ -6,7 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
+    <script src="https://kit.fontawesome.com/be3b64c1fe.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -19,8 +20,9 @@
         <%= render 'layouts/user_header' %>
       <% end %>
     </header>
-    <%= yield %>
+     <%= yield %>
+    <footer>
+      <p class="footer-text">© 2022-2023 Tomoka Murai All rights reserved.</p>
+    </footer>
   </body>
-  <footer>
-  </footer>
 </html>
