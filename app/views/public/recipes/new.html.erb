@@ -1,6 +1,6 @@
+<div class="container my-5">
+　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ投稿</h2>
 
-<tittle><strong>レシピ投稿</strong></tittle>
-<main>
 
   <%= form_with model: [:public, @recipe] do |f| %>
       <%= f.hidden_field :image %>
@@ -14,24 +14,27 @@
          <div class="col-lg-8">
            <div class="cooking-title"><strong>レシピについて</strong></div>
            <div class="description__inputBx">
-            <%= f.text_field :name, placeholder: "タイトル(50文字以内)", class: "form-control col-sm-4" %><br>
-            <%= f.text_area :introduction, placeholder: "紹介文(140字以内)", class: "form-control col-sm-4" %><br>
+            <%= f.text_field :name, placeholder: "タイトル(50文字以内)", class: "form-control col-sy-5" %><br>
+            <%= f.text_area :introduction, placeholder: "紹介文(140字以内)", class: "form-control col-sy-5" %><br>
+            <i class="fa-solid fa-camera-retro"></i>
             <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
            </div>
          </div>
         </div>
        </div>
+       <br>
+       <br>
 　　　　　<!-- 材料 -->
 　　 　<div class="container">
         <div class="row">
          <div class="d-flex flex-column bd-highlight mb-3">
-         <div class="cooking-title"><strong>材料</strong></div>
+         <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>材料</h2>
           <section class="ingredient">
            <%= f.fields_for :ingredients do |ingredient| %>
             <%= render "ingredient_fields", f: ingredient %>
            <% end %>
 
-           <%= link_to_add_association "材料を追加", f, :ingredients, class: "btn btn-outline-primary ms navbar-brand" %>
+           <%= link_to_add_association "材料を追加", f, :ingredients, class: "btn btn-outline-dark ms navbar-brancol-sm-4" %>
 
           </section>
          </div>
@@ -40,27 +43,38 @@
       <br>
       <br>
       <!-- 作り方 -->
-    <div class="container">
+    <div class="container my-5">
      <div class="row">
       <div class="d-flex flex-column bd-highlight mb-3">
-      <div class="cooking-title"><strong>作り方</strong></div>
+      <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>作り方</h2>
        <section class="step">
         <%= f.fields_for :cook_steps do |step| %>
          <%= render "cook_step_fields", f: step %>
         <% end %>
-        <%= link_to_add_association "作り方を追加", f, :cook_steps, class: "btn btn-outline-primary ms navbar-brand" %>
+        <%= link_to_add_association "作り方を追加", f, :cook_steps, class: "btn btn-outline-dark ms navbar-bran col-sm-4" %>
        </section>
       </div>
  　   </div>
  　  </div>
-  　<div class="container">
+ 　 <div class="check_box">
+    <span>タグ</span>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :tag_id, :tag_name) do |tag| %>
+      <div>
+       <%= tag.label do %>
+         <%= tag.check_box %>
+         <%= tag.text %>
+       <% end %>
+     　</div>
+   <% end %>
+ 　　</div>
+  　<div class="container my-5">
      <div class="row">
        <div class="submit">
- 　      <%= f.submit "送信する",class: "btn btn-outline-dark ms navbar-brand" %>
+ 　      <%= f.submit "送信する",class: "btn btn-outline-dark form-control col-my-5" %>
  　    </div>
      </div>
     </div>
   <% end %>
 
-</main>
+</div>
 

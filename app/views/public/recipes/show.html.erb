@@ -118,7 +118,9 @@
 </div>
 <div class="container my-5">
   <%= form_with model: [:public, @recipe, @comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control col-sm-4"%>    <%= f.submit "送信する", class: "btn btn-outline-dark mr-2 navbar-brand"%>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control col-sm-4"%>
+    <br>
+    <%= f.submit "送信する", class: "btn btn-outline-dark mr-2 navbar-brand col-sm-4"%>
   <% end %>
 </div>
 </div>

@@ -1,17 +1,28 @@
 <main>
-  <div class="main-visual">
-    <div class="main-visual-content">
-      <h1 style="font-weight: bold;">Welcome to<br>CookShare</h1>
-		  <p class="main-visual-text">
+　<div class="container">
+    <div class="row">
+      <div class="col-lg-4" style="background-color: orange;">
+        <br>
+        <h1 style="font-weight: bold;">Welcome to<br>CookShare</h1>
+		  　<p class="main-visual-text">
        	 冷蔵庫に余っている<br />
          食材を使って<br />
          美味しいご飯を作りませんか？
-       </p>
-       <p class="main-visual-name">
-       </p>
+       　</p>
+      　 <p class="main-visual-name">
+      </div>
+      <div class="col-lg-8">
+        <br>
+        <br>
+        <br>
+      　<div class="cooking-title"><strong>レシピ検索▶︎</strong></div>
+           <div class="description__inputBx">
+                 <%= render 'public/recipes/recipe_search' %>
+          　</div>
+    　</div>
     </div>
   </div>
-</div>
+
 <div class="container my-5">
   <div class="row">
 　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>新着レシピ(全<%= @amount %>件)</h2>
@@ -34,33 +45,8 @@
 	 <div class="row">
 	　<section class="popular">
           <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピカテゴリ</h2>
-          <div class="sidebar-contents">
-            <p class="popular-text">
-              和食<br />
-            </p>
-            <p class="popular-text">
-              洋食
-            </p>
-            <p class="popular-text">
-              簡単時短レシピ
-            </p>
-            <p class="popular-text">
-              特別な日にぴったりレシピ
-            </p>
-            <p class="popular-text">
-             <br />
-            </p>
-          </div>
+
     </section>
    </div>
 </div>
 </main>
-<div class="search">
- <div class="container">
-	<div class="row">
-	  <div class="search-form">
-		   <%= render 'public/recipes/recipe_search' %>
-			</div>
-	</div>
- </div>
-</div>

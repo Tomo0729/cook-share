@@ -3,8 +3,14 @@
   <div class="row">
 　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ一覧(全<%= @amount %>件)</h2>
   </div>
+  <br>
+  <br>
     <%= render 'recipe_search' %>
+  <br>
+  <br>
     <%= render 'tag_list' %>
+  <br>
+  <br>
   <div class="row">
      <% @recipes.each do |recipe| %>
           <div class="col-3 mt-3">

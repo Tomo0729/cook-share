@@ -12,8 +12,8 @@ class User < ApplicationRecord
     find_or_create_by!(email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
        #user.confirmed_at = Time.now # ← Confirmable を設定している場合は追加
-      user.first_name = "ゲスト" # ←ユーザー名を設定している場合は追加
-      user.last_name = "ユーザー"
+      user.first_name = "ユーザー" # ←ユーザー名を設定している場合は追加
+      user.last_name = "ゲスト"
       user.first_name_kana = ""
       user.last_name_kana = ""
     end

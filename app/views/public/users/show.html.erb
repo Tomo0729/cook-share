@@ -15,8 +15,11 @@
      <td><%= @user.email %></td>
     </tr>
    </table>
-   
-   <%= link_to "編集する", edit_public_user_path(@user.id), class: "btn btn-outline-dark mr-4 navbar-brand" %>
+   <% if  @user.email == "guest@example.com" %>
+      <td></td>
+   <% else %>
+       <%= link_to "編集する", edit_public_user_path(@user.id), class: "btn btn-outline-dark mr-4 navbar-brand" %>
+   <% end %>
    <%= link_to "お気に入り一覧", favorites_public_user_path(@user), class: "btn btn-outline-dark mr-4 navbar-brand" %>
  </div>
 </div>

@@ -6,7 +6,7 @@
                    options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
                   {
                     prompt: 'タグで絞り込み',
-                    class: 'tag__item',
+                    class: 'form-control col-sm-7',
                     onchange: 'submit(this.form);'
                   }
       %>
