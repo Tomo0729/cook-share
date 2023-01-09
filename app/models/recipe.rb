@@ -10,9 +10,7 @@ class Recipe < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :tags, through: :tag_relations
-  accepts_nested_attributes_for :tags, allow_destroy: true
   has_many :tag_relations, dependent: :destroy
-  accepts_nested_attributes_for :tag_relations, allow_destroy: true
   has_many :favorites, dependent: :destroy
 
   #validates :user_id, precedence: true

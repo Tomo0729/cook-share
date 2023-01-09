@@ -1,4 +1,8 @@
-<%= form_with(url: public_search_path, method: :get, local: true)  do |f| %>
-  <%= f.search_field :name_or_ingredients_content_cont_or_keyword, placeholder: "レシピ名・食材名で検索" %>
-  <%= f.submit "Search", class:"btn btn-outline-danger" %>
-<% end %>
+
+ <div class="search-form">
+  <%= form_with(url: public_search_path, method: :get, local: true)  do |f| %>
+  <p class="">レシピ検索▶︎</p>
+   <%= f.search_field :name_or_ingredients_content_cont_or_keyword, placeholder: "レシピ名・食材名で検索", class: "form-control col-sm-5"  %>
+   <%= f.submit "検索", class:" btn btn-outline-dark form-control col-sm-1" %>
+  <% end %>
+ </div>

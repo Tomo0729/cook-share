@@ -2,11 +2,12 @@
 
 class Public::SessionsController < Devise::SessionsController
 
-  def guest_sign_in
-    user = User.guest
+ def guest_sign_in
+    user = User.guest # ← user.rbで定義したメソッド
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
-  end
+    redirect_to root_path, notice: "ゲストユーザーとしてログインしました"
+ end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

@@ -9,10 +9,13 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
+    find_or_create_by!(email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
-      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
-      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
+       #user.confirmed_at = Time.now # ← Confirmable を設定している場合は追加
+      user.first_name = "ゲスト" # ←ユーザー名を設定している場合は追加
+      user.last_name = "ユーザー"
+      user.first_name_kana = ""
+      user.last_name_kana = ""
     end
   end
 

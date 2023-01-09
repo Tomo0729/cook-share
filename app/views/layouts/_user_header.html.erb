@@ -21,9 +21,6 @@
           <%= link_to "レシピ一覧", public_recipes_path, class: "btn btn-outline-light mr-4 navbar-brand" %>
         </li>
         <li class="nav-item">
-          <%= link_to "お気に入り", favorites_public_user_path(current_user), class: "btn btn-outline-light mr-4 navbar-brand" %>
-        </li>
-        <li class="nav-item">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light mr-4 navbar-brand" %>
         </li>
       </ul>
@@ -38,7 +35,7 @@
           <%= link_to "レシピ一覧", public_recipes_path, class: "btn btn-outline-light mr-4 navbar-brand" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ゲストログイン", new_user_registration_path, class: "btn btn-outline-light mr-4 navbar-brand" %>
+          <%= link_to "ゲストログイン",users_guest_sign_in_path, method: :post, class: "btn btn-outline-light mr-4 navbar-brand" %>
         </li>
         <li class="nav-item">
           <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light mr-4 navbar-brand" %>
@@ -46,7 +43,7 @@
         <li class="nav-item">
           <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light mr-4 navbar-brand" %>
         </li>
-             </ul>
+      </ul>
 
     <% end %>
 

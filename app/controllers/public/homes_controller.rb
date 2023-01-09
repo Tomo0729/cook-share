@@ -6,4 +6,6 @@ class Public::HomesController < ApplicationController
     @amount= Recipe.count
   end
 
+
+
 end

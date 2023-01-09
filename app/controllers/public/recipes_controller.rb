@@ -2,7 +2,6 @@ class Public::RecipesController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   def index
-   
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
     if user_signed_in?
       @recipes = @recipes.includes([:user], [:favorites]).page(params[:page]).per(12)
@@ -39,10 +38,12 @@ class Public::RecipesController < ApplicationController
   end
 
   def create
+
     @recipe = Recipe.new(recipe_params)
     recipe = current_user.recipes.new(recipe_params)
-
+    tag_list = params[:recipe][:tag_name].split(nil)
     if recipe.save
+      recipe.save_recipes(tag_list)
       redirect_to public_recipe_path(recipe)
     else
       redirect_to new_public_recipe_path, flash: {

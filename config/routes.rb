@@ -2,10 +2,9 @@ Rails.application.routes.draw do
 root to: 'public/homes#top'
 # 顧客用
 # URL /users/sign_in ...
-devise_for :users, controllers: {
+devise_for :user, controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
-
+  passwords: "public/passwords",
 }
 
 # 管理者用
@@ -13,6 +12,10 @@ devise_for :users, controllers: {
 devise_for :admin, controllers: {
   sessions: "admin/sessions"
 }
+
+devise_scope :user do
+  post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
+end
 
 namespace :admin do
     root 'homes#top'
@@ -25,11 +28,13 @@ namespace :admin do
 
  namespace :public do
     root 'homes#top'
+    #post "users/guest_sign_in", to: "sessions#guest_sign_in"
     post 'orders/confirm' => 'orders#confirm'
     get '/users/:id/quit' => 'users#quit', as: 'quit_user'
     patch 'users/out' => 'users#out', as: 'out_user'
     get 'search' => 'recipes#search'
     get 'recipes/tag/:tag_name', to: "recipes#tag_search"
+    resources :tags, only: [:index, :show, :destroy]
     resources :recipes do
      collection do
        get 'search'
@@ -42,9 +47,10 @@ namespace :admin do
        get :favorites
      end
     end
-    devise_scope :user do
-     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
-    end
+
+
+
+
 
 
   end

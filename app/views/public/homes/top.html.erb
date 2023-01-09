@@ -1,13 +1,4 @@
-<div class="search">
- <div class="container">
-	<div class="row">
-			<div class="search-form">
-		   <%= render 'public/recipes/recipe_search' %>
-			</div>
-	</div>
- </div>
-</div>
-</div>
+<main>
   <div class="main-visual">
     <div class="main-visual-content">
       <h1 style="font-weight: bold;">Welcome to<br>CookShare</h1>
@@ -21,7 +12,6 @@
     </div>
   </div>
 </div>
-</main>
 <div class="container my-5">
   <div class="row">
 　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>新着レシピ(全<%= @amount %>件)</h2>
@@ -64,7 +54,13 @@
     </section>
    </div>
 </div>
-
-
-<%= link_to "ゲストログイン",public_users_guest_sign_in_path, method: :post %>
-
+</main>
+<div class="search">
+ <div class="container">
+	<div class="row">
+	  <div class="search-form">
+		   <%= render 'public/recipes/recipe_search' %>
+			</div>
+	</div>
+ </div>
+</div>

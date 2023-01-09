@@ -1,6 +1,6 @@
 <div class="container my-5">
   <div class="row">
-    <h2>新規会員登録</h2>
+    <h2 class="recipe-heading"><i class="fa-solid fa-user"></i>新規会員登録</h2>
   </div>
 
 　<div class="row mt-3 flex-column">
@@ -26,9 +26,6 @@
 
         <div class="form-group row">
          <%= f.label :パスワード, class: "col-sm-4" %>
-         <% if @minimum_password_length %>
-         <em>(<%= @minimum_password_length %> characters minimum)</em>
-         <% end %><br />
          <%= f.password_field :password,  placeholder:"最低６文字必要です。",class: "form-control col-sm-8" %>
         </div>
 
@@ -36,12 +33,12 @@
          <%= f.label :パスワード（確認用）, class: "col-sm-4" %>
          <%= f.password_field :password,  class: "form-control col-sm-8" %>
         </div>
-
-
-        <div class="actions">
-         <%= f.submit "新規登録" , class:"btn btn-success btn-lg center-block" %>
+        <div class= "form-group row">
+        <%= f.label :新規登録ボタンを押してください, class: "col-sm-4" %>
+         <%= f.submit "新規登録" , class:"col-sm-4 btn btn-outline-dark mr-4 navbar-brand"  %>
        </div>
 　<% end %>
   　　<h3><strog4>既に登録済みの方</strong></h3>
   　　　<p><%= link_to "こちら","/users/sign_in" %>からログインしてください。</p>
   </div>
+</div>

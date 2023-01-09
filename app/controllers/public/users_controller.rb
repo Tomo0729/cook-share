@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
   def show
    @user= User.find(params[:id])
    @recipe = @user.recipes
+
   end
 
   def edit
@@ -23,9 +24,15 @@ class Public::UsersController < ApplicationController
   end
 
   def out
+    @user= current_user
+   if @user.email == "guest@example.com"
+      reset_session
+      redirect_to root_path
+   else
     current_user.update(is_deleted: true)
     reset_session
     redirect_to root_path
+   end
   end
 
   def favorites
