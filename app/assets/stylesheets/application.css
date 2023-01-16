@@ -6,20 +6,30 @@
 	box-sizing: border-box;
 }
 
-
-body,
-#wrapper {
+body{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #848282;
 }
 
+.navbar-nav{
+ color: #8b4513;
+}
+
+
+main {
+    width: 100%;
+    display: block;
+    background: #fffff0;
+  }
+
 .main-visual {
-  width: 100%; /* 横幅いっぱい */
-  height: 300px; /* 高さ300px */
+  width: 100%;
+  height: 300px;
   background-image: url(img/mv.jpg);
-  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
-  background-position: center; /* 背景画像を中央に配置 */
+  background-size: cover;
+  background-position: center;
 }
 
 .main-visual-content {
@@ -28,17 +38,19 @@ body,
   text-align: center; /* 文字を中央揃えにする */
   padding-top: 105px; /* 上側の内側余白で垂直方向の位置を調整 */
 }
-
-
-
-.main-visual-name {
-  margin-top: 30px; /* 上側の外側の余白 */
+.box{
+ width: 250px;
+ display:inline-block;
+ background:#ffffff; 
+ padding:15px; 
+ border:1px solid #432c28; 
+ border-radius:10px;
 }
 
 .search-form{
 	text-align: center;
-
 }
+
 .new_recipe {
   width: 800px; /* 横幅800px */
   display: flex; /* Flexboxの利用 */
@@ -48,43 +60,38 @@ body,
 }
 
 
-
-
 .recipe-heading {
-  border-bottom: 8px solid  #432c28;
+  color: #432c28;
+  border-bottom: 8px solid  #8b4513;
   text-align: center;
   line-height: 0.6;
 }
 
-
 .category {
-  display: inline-block;
+  display: block;
   padding: 5px 8px;
-  background-color: #acabab;
   border-radius: 3px;
   color: #fff;
   font-size: 11px;
 }
 
-pagination {
-  text-align: center;
-  padding-top: 50px;
-}
-
-.pagination p {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  margin: 0 5px;
-  color: #fff;
-  background-color: #acabab;
-  border-radius: 3px;
-  line-height: 30px;
-}
 
 .text_area{
   padding: 10px;
   color: #432c28;
+}
+
+  .recipe{
+  background-color: #ffffff;
+  }
+
+.cooking-title{
+  color: #432c28;
+}
+
+.pagination {
+ text-align: center;
+ margin: 0 auto;
 }
 
 footer {
@@ -99,3 +106,29 @@ footer {
   color: #fff;
 }
 
+@media screen and (max-width: 425px) {
+  header {
+    width: 100%;
+  }
+
+  .nav-list {
+    width: 100%;
+  }
+
+  main {
+    width: 100%;
+    display: block;
+  }
+
+.category {
+  width: 100%;
+  display: none;
+}
+
+.recipe-box{
+  width: 100%;
+  display: block;
+}
+
+
+}

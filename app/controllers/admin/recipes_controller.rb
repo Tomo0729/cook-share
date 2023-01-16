@@ -1,8 +1,6 @@
 class Admin::RecipesController < ApplicationController
 
-   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   def index
-
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
     if user_signed_in?
       @recipes = @recipes.includes([:user], [:favorites]).page(params[:page]).per(12)
@@ -21,9 +19,7 @@ class Admin::RecipesController < ApplicationController
   def show
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
     @recipe = Recipe.find(params[:id])
-
     @comment = Comment.new
-
   end
 
 
@@ -58,6 +54,8 @@ class Admin::RecipesController < ApplicationController
     @recipe= Recipe.find(params[:id])
     @recipe.destroy
     redirect_to public_user_path(current_user.id)
+    
+    @co
   end
 
 

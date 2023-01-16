@@ -5,10 +5,15 @@ class Public::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.recipe_id = recipe.id
     if comment.save
-    redirect_to  public_recipes_path
+    redirect_to  public_recipe_path(recipe)
     else
       redirect_to root_path
     end
+  end
+
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to  public_recipe_path(params[:recipe_id])
   end
 
   private

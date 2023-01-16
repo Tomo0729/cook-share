@@ -1,6 +1,6 @@
 
 <section class="tag">
- <%= form_with(url: search_public_recipes_path, method: :get, local: true)  do |f| %>
+ <%= form_with(url: public_tag_search_path, method: :get, local: true)  do |f| %>
   <div class="tag__select tag__arrow">
    <%= select_tag :tag_id,
                    options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),

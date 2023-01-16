@@ -33,9 +33,10 @@
       </td>
       <td></td>
       <td>
-
-      <div class="cancel"><%= link_to 'コメント消去', admin_comments_path(comment), method: :delete, "data-confirm" => "削除してよろしいですか？" , class: "btn btn-outline-primary ms navbar-brand" %></div>
-　　　</td>
+          <%= link_to  admin_comment_path(comment.id),  method: :delete, "data-confirm" => "削除してよろしいですか？" , :style =>"color: #432c28;", class: "btn btn-outline"  do %>
+           <h4><i class="fa-solid fa-trash"></i></h4>
+          <% end %>
+      </td>
      </tr>
     <% end %>
    </tbody>

@@ -9,13 +9,14 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
 
-require("jquery")
+
+
 
 require("jquery")
 require("@nathanvda/cocoon")
 
 
-import 'cocoon-js';
+
 
 
 Rails.start()

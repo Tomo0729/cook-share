@@ -1,6 +1,7 @@
-
 <div class="nested-fields">
   <%= f.text_field :name, placeholder: "材料", class: "ingredient__name" %>
   <%= f.text_field :quantity, placeholder: "分量", class: "ingredient__quantity" %>
-  <%= link_to_remove_association "削除", f , class: "btn btn-outline-dark ms navbar-brand"%>
+  <%= link_to_remove_association  f , :style =>"color: #432c28;", class: "btn btn-outline" do %>
+     <h4><i class="fa-solid fa-trash"></i></h4>
+  <% end %>
 </div>

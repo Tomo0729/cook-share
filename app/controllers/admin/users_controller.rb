@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
-  
+
   def index
     @users= User.all
+   
   end
 
   def show
@@ -11,6 +12,7 @@ class Admin::UsersController < ApplicationController
   def edit
     @user= User.find(params[:id])
   end
+
 
   def update
     @user= User.find(params[:id])
@@ -23,7 +25,7 @@ class Admin::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email)
+    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :is_deleted)
   end
 
 end

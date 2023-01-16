@@ -4,12 +4,14 @@ root to: 'public/homes#top'
 # URL /users/sign_in ...
 devise_for :user, controllers: {
   registrations: "public/registrations",
-  passwords: "public/passwords",
+  sessions: "public/sessions",
+  passwords: "public/passwords"
 }
 
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, controllers: {
+  registrations: "admin/registrations",
   sessions: "admin/sessions"
 }
 
@@ -21,9 +23,9 @@ namespace :admin do
     root 'homes#top'
     get '/users/:id/quit' => 'users#quit', as: 'quit_user'
     patch 'users/out' => 'users#out', as: 'out_user'
-    resources :users, only: [:show, :index, :edit, :update]
+    resources :users, only: [:show, :index, :edit, :update, :destroy]
     resources :recipes, except: [:destroy]
-    resources :comments
+    resources :comments, only: [:index, :destroy]
   end
 
  namespace :public do
@@ -33,14 +35,15 @@ namespace :admin do
     get '/users/:id/quit' => 'users#quit', as: 'quit_user'
     patch 'users/out' => 'users#out', as: 'out_user'
     get 'search' => 'recipes#search'
+    get "tag_search"=>"recipes#tag_search"
     get 'recipes/tag/:tag_name', to: "recipes#tag_search"
-    resources :tags, only: [:index, :show, :destroy]
+    resources :tags
     resources :recipes do
+     resources :comments, only: [:create, :destroy]
+     resource :favorites, only: [:create, :destroy]
      collection do
        get 'search'
      end
-     resources :comments, only: [:create, :destroy]
-     resource :favorites, only: [:create, :destroy]
     end
     resources :users, only: [:show, :index, :edit, :update] do
      member do

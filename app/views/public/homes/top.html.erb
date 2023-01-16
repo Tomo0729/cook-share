@@ -1,52 +1,51 @@
 <main>
 　<div class="container">
-    <div class="row">
-      <div class="col-lg-4" style="background-color: orange;">
-        <br>
-        <h1 style="font-weight: bold;">Welcome to<br>CookShare</h1>
-		  　<p class="main-visual-text">
-       	 冷蔵庫に余っている<br />
-         食材を使って<br />
-         美味しいご飯を作りませんか？
-       　</p>
-      　 <p class="main-visual-name">
+    <div class="recipe row">
+      <div class="col-lg-6">
+        <%= image_tag 'cook-share1.png', size: "500x400" %>
       </div>
-      <div class="col-lg-8">
+      <div class="col-lg-6">
         <br>
         <br>
         <br>
-      　<div class="cooking-title"><strong>レシピ検索▶︎</strong></div>
-           <div class="description__inputBx">
-                 <%= render 'public/recipes/recipe_search' %>
-          　</div>
-    　</div>
+        <br>
+        <div class="cooking-title"><strong>レシピ検索▶︎</strong></div>
+        <div class="description__inputBx">
+          <%= render 'public/recipes/recipe_search' %>
+        </div>
+        <br>
+        <div class="cooking-title"><strong>タグ検索▶︎</strong></div>
+        <div class="description__inputBx">
+          <%= render 'public/recipes/tag_list' %>
+        </div>
+      </div>
     </div>
   </div>
 
-<div class="container my-5">
-  <div class="row">
+  <div class="container my-5">
 　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>新着レシピ(全<%= @amount %>件)</h2>
-  </div>
-  <div class="row">
+    <br>
+    <div class="row">
      <% @recipes.each do |recipe| %>
-          <div class="col-3 mt-3">
-           <%= link_to public_recipe_path(recipe) do %>
+          <div class="box col-3">
+           <%= link_to public_recipe_path(recipe), :style =>"color: #432c28;" do %>
             <% if recipe.image.attached? %>
-             <%= image_tag recipe.image, size: "200x200" %>
+             <%= image_tag recipe.image, size: "200x200",class:"card-img-top" %>
             <% else %>
-             <%= image_tag 'no_image', size: "200x200" %>
+             <%= image_tag 'no_image', size: "200x200",class:"card-img-top" %>
             <% end %>
-		         <% end %>
-		         <p><%= recipe.name %></p>
-		         <p><%= recipe.introduction %></p>
+		         <br>
+		         <br>
+		         <h4><strong><%= recipe.name %></strong></h4> 
+		         <p>♥<%= recipe.favorites.count %> いいね</p>
+		         <h6><%= recipe.introduction %></h6>
+		       <% end %>
           </div>
      <% end %>
-	</div>
-	 <div class="row">
-	　<section class="popular">
-          <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピカテゴリ</h2>
-
-    </section>
+     </div>
+    <div class="pagination">
+	   <%= paginate @recipes %>
+	  </div>
    </div>
-</div>
+  </div>
 </main>

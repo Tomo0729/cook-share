@@ -1,12 +1,13 @@
-<div class="nested-fields">
-     <%= f.text_area :direction, placeholder: "作り方", class: "form-control col-my-5" %>
-     <%= link_to_remove_association "消去", f, class: "btn btn-outline-dark ml navbar-brand" %>
-    <div class="step__file-input">
-      <% if current_page?(controller:"recipes", action: "new") %>
-        <span class="step__file-label"><i class="fa-solid fa-camera-retro"></i>手順の画像：</span><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png",  class: "image" %>
-      <% else %>
-        <span class="step__file-label"><i class="fa-solid fa-camera-retro"></i>変更後の画像：</span><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png",  class: "image" %>
-      <% end %>
-    </div>
-</div>
+ <div class="nested-fields">
+     <%= f.text_area :direction, placeholder: "作り方", class: "form-control col-8" %>
+     <i class="fa-solid fa-camera-retro"></i>   <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
+  　  <%= link_to_remove_association  f ,:style =>"color: #432c28;", class: "btn btn-outline"  do %>
+  　  <h4> <i class="fa-solid fa-trash"></i></h4>
+  　  <% end %>
+  　  <p>-----------------------------------------------------------------------------</p>
+ </div>
+
+
+
+
 

@@ -18,7 +18,7 @@
     <% @users.each do |user| %>
      <tr>
       <td><%= user.id %></td>
-      <td><%= link_to admin_user_path(user) do %><%= user.last_name %><%= user.first_name %> <% end %>　</td>
+      <td><%= user.last_name %><%= user.first_name %></td>
       <td><%= user.email %></td>
       <td><% if user.is_deleted == false %>
            <div class="btn btn-info text-white p-1 ml-1 rounded">

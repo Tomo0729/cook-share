@@ -1,6 +1,6 @@
 <div class="container my-5">
  <div class="row">
-   <h3><i class="fa-solid fa-user"></i>マイページ        <%= link_to  new_public_recipe_path, class:" text-dark" do %><i class="fa-regular fa-square-plus"></i><% end %></h3>
+   <h3><i class="fa-solid fa-user"></i>マイページ</h3>
    <table class= "table">
     <tr>
       <th>氏名</th>
@@ -15,11 +15,13 @@
      <td><%= @user.email %></td>
     </tr>
    </table>
-   <% if  @user.email == "guest@example.com" %>
+   <div class= "btn">
+   <% if  @user.email == "guest@example1.com" %>
       <td></td>
    <% else %>
-       <%= link_to "編集する", edit_public_user_path(@user.id), class: "btn btn-outline-dark mr-4 navbar-brand" %>
+       <%= link_to "プロフィールを編集する", edit_public_user_path(@user.id), class: "btn btn-outline-dark mr-4" %>
+       <%= link_to "お気に入り一覧", favorites_public_user_path(@user), class: "btn btn-outline-dark mr-4" %>
    <% end %>
-   <%= link_to "お気に入り一覧", favorites_public_user_path(@user), class: "btn btn-outline-dark mr-4 navbar-brand" %>
+   </div>
  </div>
 </div>

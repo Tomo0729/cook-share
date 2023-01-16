@@ -1,18 +1,12 @@
 <div class="container my-5">
-  <div class="row">
-    <h2 class="recipe-heading"><i class="fa-solid fa-user"></i>新規会員登録</h2>
-  </div>
-
-　<div class="row mt-3 flex-column">
-　<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
+　<div class="row flex-column">
+　 <h1><i class="fa-solid fa-user"></i>新規会員登録</h1>
+　 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   　　　　<div class="form-group row">
           <%= f.label :氏名, class: "col-sm-4" %>
           <%= f.text_field :last_name, class: "form-control col-sm-4" %>
           <%= f.text_field :first_name, class: "form-control col-sm-4" %>
         </div>
-
         <div class="form-group row">
           <%= f.label :ふりがな, class: "col-sm-4" %>
           <%= f.text_field :last_name_kana, class: "form-control col-sm-4" %>
@@ -25,7 +19,7 @@
         </div>
 
         <div class="form-group row">
-         <%= f.label :パスワード, class: "col-sm-4" %>
+         <%= f.label :パスワード（６文字以上）, class: "col-sm-4" %>
          <%= f.password_field :password,  placeholder:"最低６文字必要です。",class: "form-control col-sm-8" %>
         </div>
 
@@ -37,8 +31,8 @@
         <%= f.label :新規登録ボタンを押してください, class: "col-sm-4" %>
          <%= f.submit "新規登録" , class:"col-sm-4 btn btn-outline-dark mr-4 navbar-brand"  %>
        </div>
-　<% end %>
+　 <% end %>
   　　<h3><strog4>既に登録済みの方</strong></h3>
-  　　　<p><%= link_to "こちら","/users/sign_in" %>からログインしてください。</p>
+  　　　<p><%= link_to "こちら",new_user_session_path %>からログインしてください。</p>
   </div>
 </div>

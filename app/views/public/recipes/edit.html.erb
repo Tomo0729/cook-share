@@ -1,54 +1,104 @@
+<% if @recipe.errors.any? %>
+  <%= @recipe.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-
-<div class="container my-5">
- <div class="row">
-  <div class-"offset-1">
-   <h2><strong>レシピ編集</strong></h2>
-  </div>
+ <div class="container my-5">
+　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ編集</h2>
  </div>
-  <main>
-     <%= form_with model: [:public, @recipe] do |f| %>
-     <%= f.hidden_field :image %>
-     <section class="introduction">
+ <div class="container my-10">
+  <%= form_with model: [:public, @recipe] do |f| %>
+       <div class="container">
+        <div class="row">
+         <div class="col-lg-3">
+          <% if @recipe.image.attached? %>
+             <%= image_tag @recipe.image, size: "250x250" %>
+        　　 <% else %>
+             <%= image_tag 'no_image', size: "250x250" %>
+        　　 <% end %>
+         </div>
+         <div class="col-lg-9">
+           <h4 class="cooking-title"><strong>レシピについて</strong></h4>
+            <div class="description__inputBx">
+            　<%= f.text_field :name, placeholder: "タイトル(50文字以内)", class: "form-control col-sy-5" %><br>
+           　　 <%= f.text_area :introduction, placeholder: "紹介文(140字以内)", class: "form-control col-sy-5" %><br>
+           　　 <i class="fa-solid fa-camera-retro"></i> <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
+            </div>
+         </div>
+       </div>
+      </div>
       <div class="introduction__inner">
        <div class="introduction__img-field">
-
          <div class="description__texts">
-          <div class="cooking-title"><strong>レシピについて</strong></div>
-           <div class="description__inputBx">
-            <%= f.text_field :name, placeholder: "タイトル(50文字以内)", class: "form-control col-sm-4" %><br>
-            <%= f.text_area :introduction, placeholder: "紹介文(140字以内)", class: "form-control col-sm-4" %><br>
-            <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
-           </div>
-           <br>
-　　　　　<!-- 材料 -->
-         <div class="cooking-title"><strong>材料</strong></div>
-          <section class="ingredient">
-           <%= f.fields_for :ingredients do |ingredient| %>
-            <%= render "ingredient_fields", f: ingredient %>
-           <% end %>
-           <%= link_to_add_association "追加", f, :ingredients, class: "btn btn-outline-primary ms navbar-brand" %>
-          </section>
+
+　　　　<!-- 材料 -->
+         <div class="container my-5">
+         <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>材料</h2>
          </div>
+          <section class="ingredient">
+           <div id= "ingredients">
+            <%= f.fields_for :ingredients do |ingredient| %>
+             <%= render "ingredient_fields", f: ingredient %>
+            <% end %>
+           </div>
+            <%= link_to_add_association "材料追加", f, :ingredients, data: { association_insertion_node: '#ingredients',
+            association_insertion_method: 'append'
+            },class: "btn btn-dark  navbar-brand col-sy-5" %>
+          </section>
+          </div>
         </div>
       <br>
       <!-- 作り方 -->
-      <div class="cooking-title"><strong>作り方</strong></div>
-       <section class="step">
-        <%= f.fields_for :cook_steps do |step| %>
-         <%= render "cook_step_fields", f: step %>
-        <% end %>
-        <%= link_to_add_association "追加", f, :cook_steps, class: "btn btn-outline-primary ms navbar-brand" %>
-
-       </section>
-
-
- 　 　 </div>
- 　　<div class="form-group">
-  　 <%= f.submit "変更を保存", class: "btn btn-success" %>
+      <div class="container my-5">
+　　　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>作り方</h2>
+　　　  <div class = "row">
+　　　   <div class="col-lg-2">
+　　　    <% @recipe.cook_steps.each do |cook_step| %>
+　　　      <% if cook_step.image.attached? %>
+             <%= image_tag cook_step.image, size: "130x130" %>
+             <br>
+             <br>
+             <br>
+            <% else %>
+             <%= image_tag 'no_image', size: "130x130" %>
+             <br>
+             <br>
+             <br>
+            <% end %>
+          <% end %>
+         </div>
+         <div class="col-lg-9">
+         <section class="step">
+          <br>
+          <br>
+          <div id= "cook_steps">
+           <%= f.fields_for :cook_steps do |step| %>
+            <%= render "cook_step_fields", f: step %>
+           <% end %>
+          </div>
+        <%= link_to_add_association "作り方を追加", f, :cook_steps,  data: { association_insertion_node: '#cook_steps',
+            association_insertion_method: 'append'
+            },class: "btn btn-dark  navbar-brand col-sy-5" %>
+         </section>
+　　　 </div>
+　　　</div>
+　　</div>
+    <div class="cancel my-5">
+      <%= f.submit "変更を保存", class: "btn btn-outline-dark form-control col-sm-8 offset-2" %>
+     <br>
+     <br>
+     <br>
+      <%= link_to '編集をやめる', public_recipe_path, class: "btn btn-outline-primary form-control col-sm-4 offset-2"%>
+      <%= link_to 'レシピを消去する', public_recipe_path , method: :delete, "data-confirm" => "削除してよろしいですか？" , class: "btn btn-outline-danger form-control col-sm-4" %>
+     <br>
+     <br>
     </div>
-    <div class="cancel"><%= link_to '編集をやめる', public_recipe_path, class: "btn btn-outline-primary ms navbar-brand" %></div>
-    <div class="cancel"><%= link_to 'レシピを消去する', public_recipe_path , method: :delete, "data-confirm" => "削除してよろしいですか？" , class: "btn btn-outline-primary ms navbar-brand" %></div>
+ <% end %>
+</div>
 
-    <% end %>
+
 
