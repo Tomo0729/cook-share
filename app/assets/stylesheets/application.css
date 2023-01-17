@@ -38,12 +38,13 @@ main {
   text-align: center; /* 文字を中央揃えにする */
   padding-top: 105px; /* 上側の内側余白で垂直方向の位置を調整 */
 }
+
 .box{
  width: 250px;
  display:inline-block;
- background:#ffffff; 
- padding:15px; 
- border:1px solid #432c28; 
+ background:#ffffff;
+ padding:15px;
+ border:1px solid #432c28;
  border-radius:10px;
 }
 
