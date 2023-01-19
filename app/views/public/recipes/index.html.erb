@@ -1,12 +1,13 @@
-<div class="container my-5 offset-2">
+<main>
+  <div class="container my-5 offset-2">
    <div class="cooking-title"><strong>レシピ検索▶︎</strong></div>
      <%= render 'public/recipes/recipe_search' %>
     <br>
-   <div class="cooking-title"><strong>タグ検索▶︎</strong></div>
+    <div class="cooking-title"><strong>タグ検索▶︎</strong></div>
       <%= render 'public/recipes/tag_list' %>
- </div>
- <div class=" container my-5">
-　 <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ一覧(全<%= @amount %>件)</h2>
+  </div>
+  <div class=" container my-5">
+   <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ一覧(全<%= @amount %>件)</h2>
    <br>
    <div class="row">
      <% @recipes.each do |recipe| %>
@@ -27,11 +28,10 @@
      <% end %>
     
 	 </div>
-	<div class="pagination">
-
-	 <%= paginate @recipes %>
-
-	</div>
-</div>
+	 <div class="pagination">
+	  <%= paginate @recipes %>
+	 </div>
+  </div>
+</main>
 
 

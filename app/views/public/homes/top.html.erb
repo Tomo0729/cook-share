@@ -1,29 +1,29 @@
 <main>
-　<div class="container">
-    <div class="recipe row">
+  <div class="container">
+    <div class="recipe row mt-5">
       <div class="col-lg-6">
         <%= image_tag 'cook-share1.png', size: "500x400" %>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6"><!-- 検索 -->
         <br>
         <br>
         <br>
         <br>
         <div class="cooking-title"><strong>レシピ検索▶︎</strong></div>
-        <div class="description__inputBx">
+        <div class="search">
           <%= render 'public/recipes/recipe_search' %>
         </div>
         <br>
         <div class="cooking-title"><strong>タグ検索▶︎</strong></div>
-        <div class="description__inputBx">
+        <div class="tag_search">
           <%= render 'public/recipes/tag_list' %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container my-5">
-　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>新着レシピ(全<%= @amount %>件)</h2>
+  <div class="container my-5"><!-- 新着レシピ -->
+   <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>新着レシピ(全<%= @amount %>件)</h2>
     <br>
     <div class="row">
      <% @recipes.each do |recipe| %>
@@ -36,7 +36,7 @@
             <% end %>
 		         <br>
 		         <br>
-		         <h4><strong><%= recipe.name %></strong></h4> 
+		         <h4><strong><%= recipe.name %></strong></h4>
 		         <p>♥<%= recipe.favorites.count %> いいね</p>
 		         <h6><%= recipe.introduction %></h6>
 		       <% end %>

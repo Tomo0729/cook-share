@@ -1,28 +1,27 @@
-<div class=" container my-5">
-　 <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ一覧(全<%= @amount %>件)</h2>
-   <br>
-   <div class="row">
-     <% @recipes.each do |recipe| %>
-          <div class="box col-3">
-           <%= link_to admin_recipe_path(recipe), :style =>"color: #432c28;" do %>
-            <% if recipe.image.attached? %>
-             <%= image_tag recipe.image, size: "200x200",class:"card-img-top"%>
-            <% else %>
-             <%= image_tag 'no_image', size: "200x200",class:"card-img-top"%>
-            <% end %>
-		         <br>
-		         <br>
-		         <h4><strong><%= recipe.name %></strong></h4>
-		         <p>♥<%= recipe.favorites.count %> いいね</p>
-		         <h6><%= recipe.introduction %></h6>
-		       <% end %>
-          </div>
-     <% end %>
-    
+<main>
+ <div class=" container my-5">
+  <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ一覧(全<%= @amount %>件)</h2>
+  <br>
+  <div class="row">
+   <% @recipes.each do |recipe| %>
+    <div class="box col-3">
+     <%= link_to admin_recipe_path(recipe), :style =>"color: #432c28;" do %>
+      <% if recipe.image.attached? %>
+        <%= image_tag recipe.image, size: "200x200",class:"card-img-top"%>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200",class:"card-img-top"%>
+      <% end %>
+		    <br>
+		    <br>
+		    <h4><strong><%= recipe.name %></strong></h4>
+		    <p>♥<%= recipe.favorites.count %> いいね</p>
+		    <h6><%= recipe.introduction %></h6>
+		   <% end %>
+    </div>
+   <% end %>
 	 </div>
-	<div class="pagination">
-
-	 <%= paginate @recipes %>
-
-	</div>
-</div>
+ 	<div class="pagination">
+	  <%= paginate @recipes %>
+	 </div>
+ </div>
+</main>

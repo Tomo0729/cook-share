@@ -1,10 +1,7 @@
-<div class="container my-5">
+<main><!-- タグ検索結果画面-->
+ <div class="container my-5">
    <div class= "cooking-tittle">
-   <% if @tasearch.present? %>
-    <h2 class="recipe-heading">「<%= @tag_search %>」の検索結果<i class="fa-solid fa-magnifying-glass"></i></h2>
-   <% else %>
-  　<h2 class="recipe-heading"><i class="fa-solid fa-magnifying-glass"></i>検索結果!!</h2>
-   <% end %>
+    <h2 class="recipe-heading"><i class="fa-solid fa-magnifying-glass"></i>検索結果</h2>
    </div>
    <div class="row">
      <% @recipes.each do |recipe| %>
@@ -27,4 +24,5 @@
     <div class="pagination">
 	   <%= paginate @recipes %>
 	  </div>
-</div>
+ </div>
+</main>

@@ -1,6 +1,6 @@
-<main>
+<main><!-- お気に入り画面-->
  <div class="container my-5">
-　　<h2 class="recipe-heading"><i class="fa-solid fa-heart"></i>お気に入りレシピ</h2>
+  <h2 class="recipe-heading"><i class="fa-solid fa-heart"></i>お気に入りレシピ</h2>
      <% @favorite_recipes.each do |recipe| %>
           <div class="box col-3">
            <%= link_to public_recipe_path(recipe), :style =>"color: #432c28;" do %>

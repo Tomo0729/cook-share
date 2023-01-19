@@ -1,86 +1,90 @@
-<div class="container my-5">
-　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ投稿</h2>
-
- <!-- エラーメッセージ -->
-　<% if @recipe.errors.any? %>
-  <%= @recipe.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @recipe.errors.full_messages.each do |message| %>
+<main>
+ <div class="container my-5">
+  <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>レシピ投稿</h2>
+   <!-- エラーメッセージ -->
+  <% if @recipe.errors.any? %>
+    <%= @recipe.errors.count %>件のエラーが発生しました
+    <ul>
+     <% @recipe.errors.full_messages.each do |message| %>
       <li><%= message %></li>
-    <% end %>
-  </ul>
-  <% end %>
+     <% end %>
+    </ul>
+   <% end %>
 
-　<div class="container my-10">
-  <%= form_with model: [:public, @recipe] do |f| %>
+  <div class="container my-10">
+   <%= form_with model: [:public, @recipe] do |f| %>
 
-       <!-- レシピについて -->
-       <div class="container">
-        <div class="row">
-         <div class="col-lg-8">
-           <div class="cooking-title"><strong>レシピについて</strong></div>
-           <div class="description__inputBx">
+    <!-- レシピについて -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="cooking-title"><strong>レシピについて</strong></div>
+          <div>
             <%= f.text_field :name, placeholder: "タイトル(50文字以内)", class: "form-control col-sy-5" %><br>
             <%= f.text_area :introduction, placeholder: "紹介文(140字以内)", class: "form-control col-sy-5" %><br>
             <i class="fa-solid fa-camera-retro"></i>
             <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
-           </div>
-         </div>
-        </div>
-       </div>
-       <br>
-       <br>
-　　　　　<!-- 材料 -->
-         <div class="container my-5">
-　      　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>材料</h2>
-         </div>
-         <div class="container my-5">
-          <section class="ingredient">
-           <div id= "ingredients">
-            <%= f.fields_for :ingredients do |ingredient| %>
-             <%= render "ingredient_fields", f: ingredient %>
-            <% end %>
-           </div>
-            <%= link_to_add_association "材料追加", f, :ingredients, data: { association_insertion_node: '#ingredients',
-            association_insertion_method: 'append'
-            },class: "btn btn-dark  navbar-brand col-sy-5" %>
-          </section>
           </div>
-        <div class="container my-5">
-　      　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>作り方</h2>
         </div>
-        <div class="container my-5">
-          <section class="step">
-            <div id= "cook_steps">
-            <%= f.fields_for :cook_steps do |step| %>
-        　　　　 <%= render "cook_step_fields", f: step %>
-        　　　<% end %>
-        　　</div>
-            <%= link_to_add_association "作り方を追加", f, :cook_steps,  data: { association_insertion_node: '#cook_steps',
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- 材料 -->
+    <div class="container my-5">
+     <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>材料</h2>
+    </div>
+    <div class="container my-5">
+      <section class="ingredient">
+        <div id= "ingredients">
+          <%= f.fields_for :ingredients do |ingredient| %>
+            <%= render "ingredient_fields", f: ingredient %>
+          <% end %>
+        </div>
+        <%= link_to_add_association "材料追加", f, :ingredients, data: { association_insertion_node: '#ingredients',
             association_insertion_method: 'append'
             },class: "btn btn-dark  navbar-brand col-sy-5" %>
-          </section>
+      </section>
+    </div>
+
+    <!-- 作り方 -->
+    <div class="container my-5">
+     <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>作り方</h2>
+    </div>
+    <div class="container my-5">
+      <section class="step">
+        <div id= "cook_steps">
+          <%= f.fields_for :cook_steps do |step| %>
+           <%= render "cook_step_fields", f: step %>
+          <% end %>
         </div>
-      <div class="container my-5">
- 　　　　　<h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>タグ</h2>
-   　　</div>
-   　　<div class="cooking-title container">
-   　 　<div class="row offset-1">
-   　　 <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+        <%= link_to_add_association "作り方を追加", f, :cook_steps,  data: { association_insertion_node: '#cook_steps',
+            association_insertion_method: 'append'
+            },class: "btn btn-dark  navbar-brand col-sy-5" %>
+      </section>
+    </div>
+    <!-- タグ -->
+    <div class="container my-5">
+     <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>タグ</h2>
+    </div>
+    <div class="cooking-title container">
+     <div class="row offset-1">
+     <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
          <h4>
            <%= tag.check_box %>
            <%= tag.text %>
          </h4>
-  　　　 <% end %>
-  　　 </div>
- 　　</div>
-  　<div class="container my-5">
-
-       <div class="submit">
- 　      <%= f.submit "送信する",class: "btn btn-dark form-control col-my-5" %>
- 　    </div>
+     <% end %>
+     </div>
     </div>
-  <% end %>
+    <div class="container my-5">
+     <div class="submit">
+      <%= f.submit "送信する",class: "btn btn-dark form-control col-my-5" %>
+     </div>
+    </div>
+   <% end %>
+  </div>
  </div>
-</div>
+</main>
 

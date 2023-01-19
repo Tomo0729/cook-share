@@ -1,44 +1,38 @@
-<div class="container my-5">
-
-  <div class="row d-flex justify-content-center">
-    <% if flash[:user_updated_error] %>
-      <span class="text-danger"><%= flash[:user_updated_error] %></span>
-    <% end %>
-  </div>
-
-    <div class="row mt-3 flex-column align-items-center">
-    <h2><%= @user.last_name %><%= @user.first_name %>さんの会員情報編集</h2>
-  <%= form_with model: [:public, @user] do |f| %>
+<main><!-- ユーザー情報編集画面-->
+ <div class="container my-5">
+  <div class="row mt-3 flex-column align-items-center">
+    <h2><i class="fa-solid fa-user"></i><%= @user.last_name %><%= @user.first_name %>さんの会員情報編集</h2>
+    <%= form_with model: [:public, @user] do |f| %>
      <br>
      <br>
-
      <div class="form-group row">
           <%= f.label :氏名, class: "col-sm-4" %>
           <%= f.text_field :last_name, class: "form-control col-sm-4" %>
           <%= f.text_field :first_name, class: "form-control col-sm-4" %>
-        </div>
+      </div>
 
-        <div class="form-group row">
+      <div class="form-group row">
           <%= f.label :ふりがな, class: "col-sm-4" %>
           <%= f.text_field :last_name_kana, class: "form-control col-sm-4" %>
           <%= f.text_field :first_name_kana, class: "form-control col-sm-4" %>
-        </div>
+      </div>
 
-        <div class="form-group row">
+      <div class="form-group row">
           <%= f.label :メールアドレス, class: "col-sm-4" %>
           <%= f.email_field :email, class: "form-control col-sm-8" %>
+      </div>
+      <div class="row">
+        <div class="offset-4 col-2">
+          <%= f.submit "編集内容を保存", class: "btn btn-outline-dark" %>
         </div>
-        <div class="row">
-          <div class="offset-4 col-2">
-           <%= f.submit "編集内容を保存", class: "btn btn-outline-dark" %>
-          </div>
-          <div class="offset-3">
-           <%= link_to "退会する" , public_quit_user_path(@user), method: :get, class: "btn btn-outline-danger" %>
-          </div>
+        <div class="offset-3">
+          <%= link_to "退会する" , public_quit_user_path(@user), method: :get, class: "btn btn-outline-danger" %>
         </div>
-        <br>
-        <br>
-        <br>
-    </div>
-  <% end %>
-</div>
+      </div>
+      <br>
+      <br>
+      <br>
+    <% end %>
+  </div>
+ </div>
+</main>

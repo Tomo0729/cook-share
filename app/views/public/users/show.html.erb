@@ -1,27 +1,29 @@
-<div class="container my-5">
- <div class="row">
-   <h3><i class="fa-solid fa-user"></i>マイページ</h3>
-   <table class= "table">
-    <tr>
+ <main><!-- マイページ画面-->
+  <div class="container my-5">
+   <div class="row">
+    <h3><i class="fa-solid fa-user"></i>マイページ</h3>
+    <table class= "table">
+     <tr>
       <th>氏名</th>
       <td><%= @user.last_name %><%= @user.first_name %></td>
-    </tr>
-    <tr>
-　　 <th>ふりがな</th>
-     <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
-    </tr>
-    <tr>
-     <th>E-mail</th>
-     <td><%= @user.email %></td>
-    </tr>
-   </table>
-   <div class= "btn">
-   <% if  @user.email == "guest@example1.com" %>
+     </tr>
+     <tr>
+      <th>ふりがな</th>
+      <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
+     </tr>
+     <tr>
+      <th>E-mail</th>
+      <td><%= @user.email %></td>
+     </tr>
+    </table>
+    <div class= "btn">
+    <% if  @user.email == "guest@example1.com" %>
       <td></td>
-   <% else %>
+    <% else %>
        <%= link_to "プロフィールを編集する", edit_public_user_path(@user.id), class: "btn btn-outline-dark mr-4" %>
        <%= link_to "お気に入り一覧", favorites_public_user_path(@user), class: "btn btn-outline-dark mr-4" %>
-   <% end %>
+    <% end %>
    </div>
+  </div>
  </div>
-</div>
+</main>

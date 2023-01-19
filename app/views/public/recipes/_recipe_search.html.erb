@@ -1,9 +1,9 @@
 <section class="search">
   <%= form_with(url: search_public_recipes_path, method: :get, local: true)  do |f| %>
     <div class="input-group">
-      <%= f.text_field :keyword, value: @keyword, placeholder: "レシピ名で検索", class: "form-control col-sm-7" %>
+      <%= f.text_field :keyword, value: @keyword, placeholder: "レシピ名で検索", class: "form-control col-sm-6" %>
       <span class="input-group-btn">
-       <%= f.submit "検索", class:" btn btn-outline-dark form-control　col-sm-1" %>
+       <%= f.submit "検索", class:" btn btn-outline-dark form-control" %>
       </span>
     </div>
   <% end %>
