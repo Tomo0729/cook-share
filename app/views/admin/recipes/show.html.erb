@@ -11,27 +11,30 @@
       <%= image_tag 'no_image', size: "350x350" %>
     <% end %>
    </div>
+   <div class="col-lg-7">
+   <br>
 <!-- タイトル -->
-   <div class="row mt-3">
-    <h4><strong><%= @recipe.name %></strong></h4>
-   </div>
+    <div class="row mt-3">
+     <h4><strong><%= @recipe.name %></strong></h4>
+    </div>
 <!-- 説明 -->
-   <div class="row mt-3">
-    <p><%= @recipe.introduction %></p>
-   </div>
+    <div class="row mt-3">
+     <p><%= @recipe.introduction %></p>
+    </div>
 <!-- 投稿者 -->
-   <h6 class="row mt-3"><i class="fa-solid fa-user"></i>投稿者
-    <p><%= @recipe.user.last_name %><%= @recipe.user.first_name %></p>
-   </h6>
+    <h6 class="row mt-3"><i class="fa-solid fa-user"></i>投稿者
+     <p><%= @recipe.user.last_name %><%= @recipe.user.first_name %></p>
+    </h6>
  <!-- いいね-->
-   <div class="row mt-3">
-    <h4>♥<%= @recipe.favorites.count %> いいね</h4>
-   </div>
+    <div class="row mt-3">
+     <h4>♥<%= @recipe.favorites.count %> いいね</h4>
+    </div>
   <!-- タグ-->
-   <div class="row mt-3">
-    <% @recipe.tags.each do |tag| %>
-     <h4><i class="fa-regular fa-square-check"></i>     <%= tag.tag_name %> </h4>
-    <% end %>
+    <div class="row mt-3">
+     <% @recipe.tags.each do |tag| %>
+      <h4><i class="fa-regular fa-square-check"></i>     <%= tag.tag_name %> </h4>
+     <% end %>
+    </div>
    </div>
   </div>
  </div>
