@@ -8,7 +8,7 @@
     <% if @recipe.image.attached? %>
       <%= image_tag @recipe.image, size: "350x350" %>
     <% else %>
-      <%= image_tag 'no_image', size: "350x350" %>
+      <%= image_tag 'no_image.png', size: "350x350" %>
     <% end %>
    </div>
    <div class="col-lg-7">
@@ -84,7 +84,7 @@
         <% if cook_step.image.attached? %>
          <%= image_tag cook_step.image, size: "100x100" %>
         <% else %>
-         <%= image_tag 'no_image', size: "100x100" %>
+         <%= image_tag 'no_image.png', size: "100x100" %>
         <% end %>
        </td>
       </tr>
