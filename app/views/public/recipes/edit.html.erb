@@ -38,7 +38,8 @@
     <div class="container my-5">
      <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>材料</h2>
     </div>
-    <section class="ingredient">
+    <div class="col-lg-10">
+     <section class="ingredient">
      <div id= "ingredients">
       <%= f.fields_for :ingredients do |ingredient| %>
        <%= render "ingredient_fields", f: ingredient %>
@@ -47,28 +48,14 @@
      <%= link_to_add_association "材料追加", f, :ingredients, data: { association_insertion_node: '#ingredients',
             association_insertion_method: 'append'
             },class: "btn btn-dark  navbar-brand col-sy-5" %>
-    </section>
+     </section>
+    </div>
       <br>
 <!-- 作り方 -->
     <div class="container my-5">
      <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>作り方</h2>
      <div class = "row">
-       <div class="col-lg-2">
-        <% @recipe.cook_steps.each do |cook_step| %>
-          <% if cook_step.image.attached? %>
-             <%= image_tag cook_step.image, size: "130x130" %>
-             <br>
-             <br>
-             <br>
-          <% else %>
-             <%= image_tag 'no_image.png', size: "130x130" %>
-             <br>
-             <br>
-             <br>
-          <% end %>
-        <% end %>
-       </div>
-       <div class="col-lg-9">
+       <div class="col-lg-10">
          <section class="step">
           <br>
           <br>
@@ -85,11 +72,11 @@
      </div>
     </div>
     <div class="cancel my-5">
-      <%= f.submit "変更を保存", class: "btn btn-outline-dark form-control col-sm-8 offset-2" %>
+      <%= f.submit "変更を保存", class: "btn btn-outline-dark form-control col-sm-8" %>
      <br>
      <br>
      <br>
-      <%= link_to '編集をやめる', public_recipe_path, class: "btn btn-outline-primary form-control col-sm-4 offset-2"%>
+      <%= link_to '編集をやめる', public_recipe_path, class: "btn btn-outline-primary form-control col-sm-4"%>
       <%= link_to 'レシピを消去する', public_recipe_path , method: :delete, "data-confirm" => "削除してよろしいですか？" , class: "btn btn-outline-danger form-control col-sm-4" %>
      <br>
      <br>
