@@ -7,3 +7,4 @@ Tag.first_or_create([
   { tag_name: '日持ち' },
   { tag_name: 'おもてなし' }
 ])
+
