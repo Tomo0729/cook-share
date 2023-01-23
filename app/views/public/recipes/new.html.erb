@@ -68,15 +68,10 @@
     <div class="container my-5">
      <h2 class="recipe-heading"><i class="fa-solid fa-utensils"></i>タグ</h2>
     </div>
-    <div class="cooking-title container">
-     <div class="row offset-1">
+    <div class="tag-title container my-5">
      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
-         <h4>
-           <%= tag.check_box %>
-           <%= tag.text %>
-         </h4>
+         <h5><%= tag.check_box %>         <%= tag.text %><br></h5>
      <% end %>
-     </div>
     </div>
     <div class="container my-5">
      <div class="submit">
