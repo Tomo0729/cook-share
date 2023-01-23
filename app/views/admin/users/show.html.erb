@@ -1,11 +1,11 @@
 <main>
  <div class="container my-5">
   <div class="row">
-   <h2><i class="fa-solid fa-user"></i><%= @user.last_name %><%= @user.first_name %>さんの会員詳細</h2>
+   <h2><i class="fa-solid fa-user"></i><%= @user.last_name %><%= @user.first_name %>さんのユーザー詳細</h2>
   </div>
   <table class= "table">
    <tr>
-     <th>会員ID</th>
+     <th>ユーザーID</th>
      <td><%= @user.id %></td>
    </tr>
    <tr>
@@ -13,7 +13,7 @@
     <td><%= @user.last_name %><%= @user.first_name %></td>
    </tr>
    </tr>
-    <th>フリガナ</th>
+    <th>ふりがな</th>
     <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
    </tr>
    <tr>
