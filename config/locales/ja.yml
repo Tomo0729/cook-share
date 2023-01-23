@@ -1,0 +1,34 @@
+
+ja:
+  activerecord:
+    models:
+      admin: "管理者"
+      comment: "コメント"
+      cook_step: "作り方"
+      favorite: "お気に入り"
+      ingredient: "材料"
+      recipe: "レシピ"
+      tag: "タグ"
+
+    attributes:
+      user:
+        last_name: "姓"
+        first_name: "名"
+        last_name_kana: "姓かな"
+        first_name_kana: "名かな"
+        email: "メールアドレス"
+        encrypted_password: "パスワード"
+      recipe:
+        introduction: "紹介文"
+        name: "タイトル"
+        image: "画像"
+      ingredients:
+        name: "材料名"
+        quantity: "分量"
+      cook_steps:
+        direction: "手順"
+      comment:
+        comment: "コメント"
+      tag:
+        tag_name: "タグ名"
+
